@@ -32,6 +32,19 @@ app.use(session({
 // flash 中间件，用来显示通知
 app.use(flash());
 
+// 设置模版全局变量
+app.locals.blog = {
+  title: pkg.name,
+  description: pkg.description,
+};
+// 添加模版必须三个变量
+app.user(function(req, res, next) {
+  res.locals.user = req.session.user;
+  res.locals.success = req.flash('success').toString();
+  res.locals.error = req.flash('error').toString();
+  next();
+})
+
 // 路由
 routes(app);
 
