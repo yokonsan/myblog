@@ -38,7 +38,7 @@ app.locals.blog = {
   description: pkg.description,
 };
 // 添加模版必须三个变量
-app.user(function(req, res, next) {
+app.use(function(req, res, next) {
   res.locals.user = req.session.user;
   res.locals.success = req.flash('success').toString();
   res.locals.error = req.flash('error').toString();
