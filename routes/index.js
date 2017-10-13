@@ -6,5 +6,11 @@ module.exports = function (app) {
     app.use('/signin', require('./signin'));
     app.use('/signout', require('./signout'));
     app.use('/posts', require('./posts'));
+    // 404
+    app.use(function(req, res) {
+      if (!res.headersSent) {
+        res.status(404).render('404');
+      }
+    });
   };
   
