@@ -11,7 +11,7 @@
                             <img src="/img/<%= comment.author.avatar %>" alt="">
                         </span>
                         <div class="content">
-                            <a href="/posts?author=<%= comment.author._id %>" class="author"><%= comment.author.name %></a>
+                            <a href="/user/<%= comment.author._id %>" class="author"><%= comment.author.name %></a>
                             <div class="metadata">
                                 <span class="date"><%= comment.created_at %></span>
                             </div>

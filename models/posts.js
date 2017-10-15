@@ -1,5 +1,6 @@
 const marked = require('marked');
 const Post = require('../lib/mongo').Post;
+const UserModel = require('./users');
 const CommentModel = require('./comments');
 
 // 给post添加留言数commentsCount
@@ -75,6 +76,15 @@ module.exports = {
             .contentToHtml()
             .exec();
     },
+
+    // // 通过用户名获取用户所有posts
+    // getPostsByName: function getPostsByName(name) {
+    //     var userId = UserModel.getUserByName(name);
+    //     var query = {};
+    //     query.author = userId;
+
+    //     return Post.find(query).populate({ path: 'author', model: 'User' }).addCreatedAt().exec();
+    // },
 
     // 通过文章id给pv加1
     incPv: function incPv(postId) {

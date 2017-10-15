@@ -1,4 +1,5 @@
 const User = require('../lib/mongo').User;
+const Post = require('../lib/mongo').Post;
 
 module.exports = {
     // 注册一个用户
@@ -10,4 +11,12 @@ module.exports = {
     getUserByName: function getUserByName(name) {
         return User.findOne({ name: name }).addCreatedAt().exec();
     },
+
+    getUserIdByName: function getUserIdByName(name) {
+        return User.findOne({ name: name }).addCreatedAt().exec()
+            .then(function(user) {
+                return user;
+            })
+    }
+
 };

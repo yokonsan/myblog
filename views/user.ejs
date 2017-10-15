@@ -1,0 +1,31 @@
+<%- include('header') %>
+
+<div class="user-content">
+    <div class="ui grid">
+        <div class="four wide column"></div>
+        <div class="eight wide column">
+            <div class="ui segment user-data">
+                <div class="user-avatar">
+                    <img src="/img/<%= posts[0].author.avatar %>">
+                </div>
+                <div class="user-detail">
+                    <p><b>用户名：</b><%= posts[0].author.name %></p>
+                    <p><b>介绍：</b><%= posts[0].author.bio %></p>
+                    <p><b>性别：</b><%= ({m: '男', f: '女', x: '保密'})[posts[0].author.gender] %></p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+</div>
+
+<% if (posts) { %>
+    <% posts.forEach(function(post) { %>
+        <%- include('components/user-posts', { post: post }) %>
+    <% }) %>
+<% } else { %>
+    <h1>无posts</h1>
+<% } %>
+
+<%- include('footer') %>
